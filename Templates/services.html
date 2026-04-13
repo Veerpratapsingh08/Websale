@@ -1,36 +1,48 @@
-{% extends "base.html" %}
-
-{% block title %}Services | Websale{% endblock %}
-
 {% block content %}
-<section class="page-banner">
-  <div class="container">
-    <p class="eyebrow">Services</p>
-    <h1>Website packages your customers can browse and compare.</h1>
-    <p>
-      These packages are shown as example offerings for the first version of
-      the project.
-    </p>
-  </div>
-</section>
+<div class="container" style="padding: 180px 0 100px;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="section-grid" style="margin-bottom: 6rem; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div class="reveal">
+                <span class="label">CATALOG / ARCHIVE</span>
+                <h1 style="font-size: 4.5rem; line-height: 1; letter-spacing: -0.02em;">Digital <span class="serif-italic">Strategy</span> & <br>Production.</h1>
+            </div>
+            <div class="reveal" style="width: 100%; max-width: 400px;">
+                <form method="GET" action="{% url 'services' %}">
+                    <span class="spec">QUERY_PROTOCOL: SEARCH</span>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <input type="text" name="q" placeholder="Keywords..." value="{{ request.GET.q }}" style="flex-grow: 1;">
+                        <button type="submit" class="button primary" style="padding: 0 1.5rem; height: 45px;">Run</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<section class="section">
-  <div class="container card-grid">
-    <article class="info-card">
-      <h3>Basic Business Site</h3>
-      <p>Ideal for local shops and service providers.</p>
-      <p class="price">Starting at Rs. 7,999</p>
-    </article>
-    <article class="info-card">
-      <h3>Portfolio Website</h3>
-      <p>Perfect for students, designers, photographers, and freelancers.</p>
-      <p class="price">Starting at Rs. 5,999</p>
-    </article>
-    <article class="info-card">
-      <h3>Online Store Setup</h3>
-      <p>Designed for sellers who want product pages and enquiry flow.</p>
-      <p class="price">Starting at Rs. 12,999</p>
-    </article>
-  </div>
-</section>
+        <div style="display: grid; gap: 0;">
+            {% for package in packages %}
+            <div class="reveal" style="display: grid; grid-template-columns: 1fr 2fr 1.2fr; gap: 6rem; padding: 4rem 0; border-top: 1px solid var(--border); align-items: start;">
+                <div>
+                    <span class="spec">{{ package.category.name|upper }} / {{ package.id|stringformat:"04d" }}</span>
+                    <h3 style="font-size: 2rem; margin-top: 0.5rem;">{{ package.name }}</h3>
+                </div>
+                <div>
+                    <p style="color: var(--muted); font-size: 1.1rem; line-height: 1.8; max-width: 600px;">{{ package.description }}</p>
+                </div>
+                <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
+                    <p style="font-size: 2.5rem; font-weight: 700; color: var(--accent); margin-bottom: 2rem;">${{ package.price }}</p>
+                    <div style="display: flex; gap: 1rem; width: 100%; justify-content: flex-end;">
+                        <a href="{% url 'package_detail' package.slug %}" class="button secondary" style="flex-grow: 1; justify-content: center;">Technical Spec</a>
+                        <a href="{% url 'add_to_cart' package.id %}" class="button primary" style="width: 50px; justify-content: center; font-size: 1.2rem;">+</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div style="text-align: center; padding: 120px 0; border-top: 1px solid var(--border);">
+                <span class="spec">0_RESULTS_RETURNED</span>
+                <h3 style="margin: 2rem 0; font-size: 2rem;">No matching architectures found in archive.</h3>
+                <a href="{% url 'services' %}" class="button primary">Reset Search Protocol</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

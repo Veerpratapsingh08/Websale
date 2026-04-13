@@ -3,64 +3,191 @@
 {% block title %}Home | Websale{% endblock %}
 
 {% block content %}
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <p class="eyebrow">Django Ecommerce Training Project</p>
-      <h1>Sell website packages through a simple Django-powered storefront.</h1>
-      <p class="hero-text">
-        Websale is a practice project where users can explore different website
-        packages, learn what each package offers, and contact the team for a
-        custom solution.
-      </p>
-      <div class="hero-actions">
-        <a href="{% url 'services' %}" class="button primary">Explore Services</a>
-        <a href="{% url 'contact' %}" class="button secondary">Contact Us</a>
+<!-- Hero Section -->
+<section class="hero reveal">
+  <div class="container hero-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
+    <div class="hero-content">
+      <span class="label">EST. 2026 / WEB_AGENCY</span>
+      <h1>The <span class="serif-italic">Architecture</span> of Digital Commerce.</h1>
+      <p>We engineer high-fidelity digital experiences for brands that prioritize craft over convenience. Our methodology combines technical precision with editorial design.</p>
+      <div class="hero-actions" style="display: flex; gap: 1.5rem;">
+        <a href="{% url 'services' %}" class="button primary">Start Engagement</a>
+        <a href="{% url 'about' %}" class="button secondary">Read Studio Profile</a>
       </div>
     </div>
-    <div class="hero-card">
-      <h2>Why this project works for training</h2>
-      <ul>
-        <li>Uses Django views, URLs, templates, and static files</li>
-        <li>Fits an ecommerce concept without being too complex</li>
-        <li>Can later expand into products, cart, checkout, and admin</li>
-      </ul>
+    <div class="hero-visual reveal" style="position: relative; border: 1px solid var(--border-strong); aspect-ratio: 1/1; background: var(--surface);">
+        <div style="position: absolute; top: 20px; left: 20px; font-family: 'Courier New'; font-size: 10px; color: var(--muted);">REF_PLATE: 0A-92</div>
+        <div style="position: absolute; inset: 40px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center;">
+            <div style="width: 60%; height: 60%; border: 1px solid var(--accent); opacity: 0.3;"></div>
+        </div>
+        <div class="plus-marker" style="position: absolute; top: -6px; left: -6px;"></div>
+        <div class="plus-marker" style="position: absolute; top: -6px; right: -6px;"></div>
+        <div class="plus-marker" style="position: absolute; bottom: -6px; left: -6px;"></div>
+        <div class="plus-marker" style="position: absolute; bottom: -6px; right: -6px;"></div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<!-- Strategy (Services) Section -->
+<section class="section-padding reveal">
   <div class="container">
-    <div class="section-heading">
-      <p class="eyebrow">Featured Packages</p>
-      <h2>Starter offerings for the first version</h2>
+    <div class="section-grid" style="margin-bottom: 6rem;">
+        <div>
+            <span class="label">SERVICES / 01-04</span>
+            <h2 style="font-size: 3.5rem;">Engineered <span class="serif-italic">Solutions.</span></h2>
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+            <p style="color: var(--muted); max-width: 400px;">We specialize in four core vertices of digital production, ensuring every project meets our rigorous technical benchmarks.</p>
+        </div>
     </div>
-    <div class="card-grid">
-      {% for service in featured_services %}
-      <article class="info-card">
-        <h3>{{ service.title }}</h3>
-        <p>{{ service.description }}</p>
-      </article>
-      {% endfor %}
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem;">
+      <div class="boutique-card">
+        <span class="spec">[01.CONVERSION]</span>
+        <h3>Performance <br>Directives.</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Optimized landing architectures designed for maximum visitor retention and data-driven conversion cycles.</p>
+      </div>
+      <div class="boutique-card">
+        <span class="spec">[02.IDENTITY]</span>
+        <h3>Bespoke <br>Corporate.</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Digital ecosystems that reflect organizational authority through technical excellence and minimalist design.</p>
+      </div>
+      <div class="boutique-card">
+        <span class="spec">[03.COMMERCE]</span>
+        <h3>Transactional <br>Flows.</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Highly secure ecommerce infrastructure built for high-volume transactions and seamless user journeys.</p>
+      </div>
+      <div class="boutique-card">
+        <span class="spec">[04.SYSTEMS]</span>
+        <h3>Architectural <br>Apps.</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Custom cloud applications engineered with scalable backends and low-latency frontend frameworks.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section alt-section">
-  <div class="container split-section">
-    <div>
-      <p class="eyebrow">Future Scope</p>
-      <h2>Ready for the next phase of development</h2>
+<!-- Portfolio Showcase -->
+<section class="section-padding reveal">
+  <div class="container">
+    <div class="section-grid" style="margin-bottom: 8rem;">
+        <div>
+            <span class="label">PORTFOLIO / ARCHIVE</span>
+            <h2 style="font-size: 3.5rem;">The <span class="serif-italic">Case Studies</span>.</h2>
+        </div>
+        <div style="display: flex; align-items: flex-end; justify-content: flex-end;">
+            <a href="{% url 'about' %}" class="button secondary">View All Archives</a>
+        </div>
     </div>
-    <div class="check-list">
-      <p>In later stages, this project can include:</p>
-      <ul>
-        <li>Website package catalog stored in Django models</li>
-        <li>User login and registration</li>
-        <li>Shopping cart and enquiry form</li>
-        <li>Order tracking and admin dashboard</li>
-      </ul>
+    
+    <div class="portfolio-grid">
+        <div class="portfolio-item large">
+            <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Exchange">
+            </div>
+            <div class="portfolio-info">
+                <span class="spec">COMMERCE / 2025</span>
+                <h3>The Obsidian Exchange</h3>
+                <p style="color: var(--muted); font-size: 0.9rem;">A luxury commodities marketplace built with atomic design principles.</p>
+            </div>
+        </div>
+        <div class="portfolio-item small">
+            <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=1200" alt="Flow">
+            </div>
+            <div class="portfolio-info">
+                <span class="spec">SAAS / 2024</span>
+                <h3>Cinematic Vector</h3>
+                <p style="color: var(--muted); font-size: 0.9rem;">Productivity systems for global content agencies.</p>
+            </div>
+        </div>
     </div>
   </div>
+</section>
+
+<!-- Why Choose Us / Craft -->
+<section class="section-padding reveal" style="background: var(--surface);">
+    <div class="container">
+        <div class="section-grid">
+            <div style="border-right: 1px solid var(--border); padding-right: 4rem;">
+                <span class="label">PHILOSOPHY / 001</span>
+                <h2 style="font-size: 3rem; margin-bottom: 2rem;">The <span class="serif-italic">Craft</span> over <br>Convenience.</h2>
+                <p style="color: var(--muted); margin-bottom: 2rem;">We reject the assembly-line approach to web development. Every pixel is placed with intentionality; every line of code is audited for performance.</p>
+                
+                <div style="display: grid; gap: 2rem; margin-top: 4rem;">
+                    <div style="display: flex; gap: 2rem;">
+                        <span style="font-family: var(--font-serif); font-style: italic; color: var(--accent); font-size: 1.5rem;">01</span>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Atomic Design</h4>
+                            <p style="font-size: 0.85rem; color: var(--muted);">We build scalable design systems, not just static pages.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 2rem;">
+                        <span style="font-family: var(--font-serif); font-style: italic; color: var(--accent); font-size: 1.5rem;">02</span>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Technical Audit</h4>
+                            <p style="font-size: 0.85rem; color: var(--muted);">99+ Lighthouse scores are our minimum baseline.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-left: 4rem; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: var(--font-serif); font-size: 2.5rem; line-height: 1.3; margin-bottom: 2rem;">"The team at <span class="serif-italic">Websale</span> has an obsessive eye for detail. They didn't just rebuild our platform; they redefined our brand's technical authority."</p>
+                <div style="display: flex; align-items: center; gap: 1.5rem;">
+                    <div style="width: 40px; height: 1px; background: var(--accent);"></div>
+                    <p style="font-weight: 600; font-size: 0.9rem;">Marcus Thorne, CTO at Vector Labs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="section-padding reveal">
+    <div class="container">
+        <div class="section-grid" style="margin-bottom: 6rem;">
+            <div>
+                <span class="label">INVESTMENT / TIERS</span>
+                <h2 style="font-size: 3rem;">Predictable <br><span class="serif-italic">Engagements</span>.</h2>
+            </div>
+            <div style="display: flex; align-items: flex-end;">
+                <p style="color: var(--muted); max-width: 400px;">Bespoke quality coupled with standard-setting transparency in our pricing models.</p>
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+            <div style="padding: 3rem; border: 1px solid var(--border); background: var(--surface);">
+                <span class="spec">[LOG: STARTER_V1]</span>
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Editorial Landing</h3>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;">High-performance single page architectures for maximum impact.</p>
+                <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">$2,500 <span style="font-size: 0.8rem; color: var(--muted); font-weight: 400;">/ PROJECT</span></p>
+                <a href="{% url 'contact' %}" class="button secondary" style="width: 100%;">Inquire Now</a>
+            </div>
+            <div style="padding: 3rem; border: 1px solid var(--accent); background: var(--bg); position: relative;">
+                <div style="position: absolute; top: 0; right: 0; background: var(--accent); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.4rem 1rem; text-transform: uppercase; letter-spacing: 0.1em;">Standard Baseline</div>
+                <span class="spec" style="color: var(--accent);">[LOG: PRO_STABLE]</span>
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Bespoke Business</h3>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;">Full-scale digital presence with CMS integration and custom design system.</p>
+                <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">$5,500 <span style="font-size: 0.8rem; color: var(--muted); font-weight: 400;">/ PROJECT</span></p>
+                <a href="{% url 'contact' %}" class="button primary" style="width: 100%;">Initiate Project</a>
+            </div>
+            <div style="padding: 3rem; border: 1px solid var(--border); background: var(--surface);">
+                <span class="spec">[LOG: ENT_MAX]</span>
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Full Architecture</h3>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;">Comprehensive ecommerce or custom data-driven web applications.</p>
+                <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">$9,500 <span style="font-size: 0.8rem; color: var(--muted); font-weight: 400;">/ PROJECT</span></p>
+                <a href="{% url 'contact' %}" class="button secondary" style="width: 100%;">Consult Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="section-padding reveal" style="border-bottom: none;">
+    <div class="container" style="text-align: center;">
+        <span class="label">READY_TO_PROCEED</span>
+        <h2 style="font-size: 5rem; margin-bottom: 2rem; max-width: 900px; margin-inline: auto;">Start your <br><span class="serif-italic">Bespoke</span> Journey.</h2>
+        <p style="color: var(--muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto 3rem;">We are currently accepting new engagements for Q3 2026. Join our roster of elite digital brands.</p>
+        <a href="{% url 'contact' %}" class="button primary" style="padding: 1rem 3rem; font-size: 1rem;">Send Project Brief</a>
+    </div>
 </section>
 {% endblock %}

@@ -1,0 +1,55 @@
+{% block content %}
+<div class="container" style="padding: 180px 0 100px;">
+    <div style="max-width: 480px; margin: 0 auto;">
+        <div class="reveal" style="text-align: center; margin-bottom: 3rem;">
+            <span class="label">SECURITY_GATE / AUTH</span>
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Portal <span class="serif-italic">Access</span>.</h1>
+            <p style="color: var(--muted); font-size: 0.9rem;">Authenticate to access your production manifest and engagement archives.</p>
+        </div>
+        
+        <div class="glass-card reveal" style="padding: 4rem; background: var(--surface-raised); border: 1px solid var(--border-strong);">
+            <form method="POST">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <p style="color: #ef4444; margin-bottom: 1.5rem; text-align: center; font-size: 0.8rem; letter-spacing: 0.05em;">[ERROR: INVALID_CREDENTIALS]</p>
+                {% endif %}
+                
+                <div style="display: grid; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label class="spec">IDENTIFIER_KEY</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label class="spec">AUTHENTICATION_TOKEN</label>
+                        {{ form.password }}
+                    </div>
+                </div>
+                
+                <button type="submit" class="button primary" style="width: 100%; justify-content: center; margin-top: 2rem; padding: 1rem;">Execute Login</button>
+            </form>
+            
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px dashed var(--border); text-align: center;">
+                <p style="font-size: 0.8rem; color: var(--muted);">New entity? <a href="{% url 'signup' %}" style="color: var(--accent); font-weight: 700;">[INITIALIZE_ACCOUNT]</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Technical styling for Django form fields */
+    input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 4px;
+        color: var(--text) !important;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.85rem;
+    }
+    input:focus {
+        outline: none;
+        border-color: var(--accent) !important;
+    }
+</style>
+{% endblock %}

@@ -8,47 +8,90 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
-    <header class="site-header">
+    <div class="grid-line-layer"></div>
+    
+    <header class="site-header" id="navbar">
       <div class="container nav-wrapper">
-        <a href="{% url 'home' %}" class="brand">Websale</a>
+        <a href="{% url 'home' %}" class="brand">Websale <span class="serif-italic">Global</span></a>
         <nav class="site-nav">
           <a href="{% url 'home' %}">Home</a>
-          <a href="{% url 'about' %}">About</a>
-          <a href="{% url 'services' %}">Services</a>
+          <a href="{% url 'services' %}">Strategy</a>
+          <a href="{% url 'about' %}">Studio</a>
           <a href="{% url 'contact' %}">Contact</a>
+          <a href="{% url 'view_cart' %}" style="color: var(--accent);">[MANIFEST]</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}">Portal</a>
+            <a href="{% url 'logout' %}">Logout</a>
+          {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}" class="button primary">Launch</a>
+          {% endif %}
         </nav>
       </div>
     </header>
+
+    {% if messages %}
+    <div class="container" style="margin-top: 120px; position: relative; z-index: 10;">
+        {% for message in messages %}
+            <div style="font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border); padding: 1rem 0; margin-bottom: 2rem;">
+                [SYSTEM_LOG] {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <main>
       {% block content %}{% endblock %}
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <h3>Websale</h3>
-          <p>
-            A Django training project focused on selling website solutions for
-            businesses, students, and creators.
-          </p>
+      <div class="container">
+        <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem;">
+          <div>
+            <h3 class="brand">Websale</h3>
+            <p style="margin-top: 1.5rem; color: var(--muted); max-width: 400px;">Crafting digital experiences that define industries. We don't just build websites; we build growth engines.</p>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 1.5rem;">Expertise</h4>
+            <a href="{% url 'services' %}">Strategy</a><br>
+            <a href="{% url 'services' %}">Design</a><br>
+            <a href="{% url 'services' %}">Development</a><br>
+            <a href="{% url 'services' %}">Ecommerce</a>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 1.5rem;">Connect</h4>
+            <a href="{% url 'contact' %}">Contact</a><br>
+            <a href="{% url 'about' %}">About Us</a><br>
+            <a href="{% url 'dashboard' %}">Client Portal</a>
+          </div>
         </div>
-        <div>
-          <h4>Quick Links</h4>
-          <a href="{% url 'home' %}">Home</a>
-          <a href="{% url 'about' %}">About</a>
-          <a href="{% url 'services' %}">Services</a>
-          <a href="{% url 'contact' %}">Contact</a>
-        </div>
-        <div>
-          <h4>Project Goal</h4>
-          <p>
-            Build a simple ecommerce-style website in Django using templates,
-            views, routing, and static files.
-          </p>
+        <div style="text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--glass-border); color: var(--muted); font-size: 0.85rem;">
+          <p>&copy; 2026 Websale Global. All rights reserved.</p>
         </div>
       </div>
-      <p class="footer-note">Built for college Django training.</p>
     </footer>
+
+    <script>
+      // Navbar scroll effect
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      });
+
+      // Scroll Reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
   </body>
 </html>

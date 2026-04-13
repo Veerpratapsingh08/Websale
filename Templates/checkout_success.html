@@ -1,0 +1,22 @@
+{% block content %}
+<div class="container" style="padding: 180px 0 100px; text-align: center;">
+    <div class="reveal">
+        <span class="label">TRANSACTION_STATUS / SUCCESS</span>
+        <h1 style="font-size: 5rem; margin-bottom: 2rem;">Protocol <br><span class="serif-italic">Executed</span>.</h1>
+        <p style="color: var(--muted); font-size: 1.2rem; max-width: 600px; margin-inline: auto; margin-bottom: 4rem;">
+            Engagement **#{{ order.id }}** has been successfully archived in our production manifest. Your technical strategy is now being prioritized by our engineering studio.
+        </p>
+        
+        <div class="hero-visual" style="width: 120px; aspect-ratio: 1/1; border: 1px solid var(--border-strong); margin: 0 auto 4rem;">
+            <div style="position: absolute; inset: 20px; border: 1px dashed var(--accent); display: flex; align-items: center; justify-content: center;">
+                <div style="font-size: 2rem; color: var(--accent);">✓</div>
+            </div>
+        </div>
+        
+        <div style="display: flex; justify-content: center; gap: 1.5rem;">
+            <a href="{% url 'dashboard' %}" class="button primary">Access Engagement Portal</a>
+            <a href="{% url 'home' %}" class="button secondary">Return to Core</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

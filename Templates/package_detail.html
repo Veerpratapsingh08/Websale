@@ -1,0 +1,55 @@
+{% block content %}
+<div class="container" style="padding: 180px 0 100px;">
+    <div class="section-grid" style="align-items: start;">
+        <div class="reveal">
+            {% if package.image %}
+                <div class="portfolio-image" style="aspect-ratio: 1/1;">
+                    <img src="{{ package.image.url }}" alt="{{ package.name }}" style="filter: grayscale(0%); opacity: 1;">
+                </div>
+            {% else %}
+                <div class="hero-visual" style="border: 1px solid var(--border-strong); aspect-ratio: 1/1; background: var(--surface);">
+                    <div style="position: absolute; top: 20px; left: 20px; font-family: 'Courier New'; font-size: 10px; color: var(--muted);">REF_PLATE: 0A-92</div>
+                    <div style="position: absolute; inset: 40px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center;">
+                        <p style="color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.23em;">Visualization Unavailable</p>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <div style="margin-top: 3rem; padding: 2.5rem; border: 1px solid var(--border); background: var(--surface-raised);">
+                <span class="label">TECHNICAL_PROMISE</span>
+                <p style="color: var(--muted); margin-top: 1rem; font-size: 0.85rem; line-height: 1.7;">Our standard protocol ensures delivery within 14 business days. This architecture includes a full technical audit and 90-day stability guarantee.</p>
+            </div>
+        </div>
+        
+        <div class="reveal">
+            <span class="label">{{ package.category.name|upper }} / SPEC_SHEET</span>
+            <h1 style="font-size: 4rem; margin-bottom: 2rem;">{{ package.name }}</h1>
+            <p style="font-size: 2.5rem; font-weight: 700; color: var(--accent); margin-bottom: 3rem;">${{ package.price }} <span style="font-size: 0.8rem; color: var(--muted); font-weight: 400;">/ INITIAL_STAKE</span></p>
+            
+            <div style="border-top: 1px solid var(--border); padding-top: 2rem; margin-bottom: 3rem;">
+                <span class="spec">ARCHITECTURAL_OVERVIEW</span>
+                <div style="color: var(--muted); line-height: 1.8; margin-top: 1.5rem;">
+                    {{ package.description|linebreaks }}
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 4rem;">
+                <span class="spec">CORE_VERTICES</span>
+                <ul style="list-style: none; display: grid; gap: 1rem; margin-top: 1.5rem;">
+                    {% for feature in package.get_features_list %}
+                        <li style="display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; color: var(--text);">
+                            <span style="width: 4px; height: 4px; background: var(--accent);"></span>
+                            {{ feature }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="{% url 'add_to_cart' package.id %}" class="button primary" style="flex-grow: 1; justify-content: center; padding: 1.2rem;">Commit to Manifest</a>
+                <a href="{% url 'contact' %}" class="button secondary" style="padding: 1.2rem;">Consult Strategist</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

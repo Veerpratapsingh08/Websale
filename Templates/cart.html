@@ -1,0 +1,56 @@
+{% block content %}
+<div class="container" style="padding: 180px 0 100px;">
+    <div class="section-grid" style="margin-bottom: 4rem;">
+        <div>
+            <span class="label">CART / MANIFEST_01</span>
+            <h1 style="font-size: 4rem;">Transactional <br><span class="serif-italic">Manifest</span>.</h1>
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+            <p style="color: var(--muted); max-width: 400px;">Review your architectural selections before initiating the production protocol.</p>
+        </div>
+    </div>
+    
+    {% if cart_items %}
+        <div style="border-top: 1px solid var(--border);">
+            {% for item in cart_items %}
+            <div class="reveal" style="display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 4rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); align-items: center;">
+                <div>
+                    <span class="spec">{{ item.package.category.name|upper }}</span>
+                    <h3 style="font-size: 1.5rem; margin-top: 0.5rem;">{{ item.package.name }}</h3>
+                </div>
+                <div>
+                    <span class="spec">UNIT_PRICE: ${{ item.package.price }}</span>
+                    <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">Engineering engagement for high-fidelity production.</p>
+                </div>
+                <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 1rem;">
+                    <p style="font-size: 1.5rem; font-weight: 700; color: var(--text);">${{ item.total }}</p>
+                    <a href="{% url 'remove_from_cart' item.package.id %}" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #ef4444; font-weight: 700;">[VOID_ENTRY]</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 4rem 0;">
+                <div class="hero-visual" style="width: 120px; aspect-ratio: 1/1; border: 1px solid var(--border-strong);">
+                    <div style="position: absolute; inset: 20px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center;">
+                        <div class="plus-marker"></div>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <span class="spec">AGGREGATE_STAKE</span>
+                    <h2 style="font-size: 4rem; color: var(--accent); margin: 0.5rem 0;">${{ total }}</h2>
+                    <div style="display: flex; gap: 1.5rem; justify-content: flex-end; margin-top: 2rem;">
+                        <a href="{% url 'services' %}" class="button secondary">Add Vertices</a>
+                        <a href="{% url 'checkout' %}" class="button primary" style="padding: 1rem 3rem;">Initiate Protocol</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 100px 0; border: 1px solid var(--border-strong); background: var(--surface);">
+            <span class="spec">NULL_MANIFEST</span>
+            <h3 style="margin: 1.5rem 0; font-size: 2rem;">No architectures selected.</h3>
+            <a href="{% url 'services' %}" class="button primary">Initialize Archive</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

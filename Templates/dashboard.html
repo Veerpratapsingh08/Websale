@@ -1,0 +1,63 @@
+{% block content %}
+<div class="container" style="padding: 180px 0 100px;">
+    <div class="section-grid" style="margin-bottom: 6rem;">
+        <div>
+            <span class="label">CLIENT_PORTAL / {{ user.username|upper }}</span>
+            <h1 style="font-size: 4rem;">Engagement <br><span class="serif-italic">Archive</span>.</h1>
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+            <p style="color: var(--muted); max-width: 400px;">Access your technical records, active production tracks, and administrative documentation.</p>
+        </div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 280px 1fr; gap: 6rem; align-items: start;">
+        <aside class="reveal">
+            <div style="padding: 2.5rem; border: 1px solid var(--border); background: var(--surface-raised); position: sticky; top: 120px;">
+                <div style="width: 60px; height: 60px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 2rem;">
+                    {{ user.username|first|upper }}
+                </div>
+                <span class="spec">IDENT_TAG: {{ user.id|stringformat:"04d" }}</span>
+                <h3 style="font-size: 1.25rem; margin-top: 0.5rem;">{{ user.username }}</h3>
+                <p style="color: var(--muted); font-size: 0.8rem; margin-top: 0.5rem;">{{ user.email }}</p>
+                
+                <div style="margin-top: 3rem; border-top: 1px dashed var(--border); padding-top: 2rem; display: grid; gap: 1rem;">
+                    <a href="{% url 'logout' %}" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #ef4444; font-weight: 700;">[TERMINATE_SESSION]</a>
+                </div>
+            </div>
+        </aside>
+        
+        <main class="reveal">
+            <span class="spec">PRODUCTION_LOGS</span>
+            {% if orders %}
+                <div style="margin-top: 2rem; display: grid; gap: 2rem;">
+                    {% for order in orders %}
+                    <div style="padding: 2.5rem; border: 1px solid var(--border); background: var(--surface); display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span class="spec">ENG_ID: #{{ order.id }} / {{ order.created|date:"Y_m_d"|upper }}</span>
+                            <h4 style="font-size: 1.5rem; margin-top: 0.5rem;">Production Record</h4>
+                            <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                {% for item in order.items.all %}
+                                    <span style="font-size: 0.7rem; color: var(--muted); border: 1px solid var(--border-strong); padding: 0.2rem 0.6rem; text-transform: uppercase;">
+                                        {{ item.product.name }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 1.75rem; font-weight: 700; color: var(--accent);">${{ order.get_total_cost }}</p>
+                            <span class="spec" style="color: var(--accent); font-weight: 700;">[{{ order.status|upper }}]</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div style="margin-top: 2rem; padding: 6rem; text-align: center; border: 1px solid var(--border-strong); background: var(--surface);">
+                    <span class="spec">0_RECORDS_FOUND</span>
+                    <h3 style="margin: 1.5rem 0; font-size: 2rem;">No active engagements.</h3>
+                    <a href="{% url 'services' %}" class="button primary">Initialize Catalog</a>
+                </div>
+            {% endif %}
+        </main>
+    </div>
+</div>
+{% endblock %}
