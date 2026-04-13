@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Websale{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrapper">
+        <a href="{% url 'home' %}" class="brand">Websale</a>
+        <nav class="site-nav">
+          <a href="{% url 'home' %}">Home</a>
+          <a href="{% url 'about' %}">About</a>
+          <a href="{% url 'services' %}">Services</a>
+          <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>Websale</h3>
+          <p>
+            A Django training project focused on selling website solutions for
+            businesses, students, and creators.
+          </p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="{% url 'home' %}">Home</a>
+          <a href="{% url 'about' %}">About</a>
+          <a href="{% url 'services' %}">Services</a>
+          <a href="{% url 'contact' %}">Contact</a>
+        </div>
+        <div>
+          <h4>Project Goal</h4>
+          <p>
+            Build a simple ecommerce-style website in Django using templates,
+            views, routing, and static files.
+          </p>
+        </div>
+      </div>
+      <p class="footer-note">Built for college Django training.</p>
+    </footer>
+  </body>
+</html>

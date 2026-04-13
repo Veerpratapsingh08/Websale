@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Websale{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Django Ecommerce Training Project</p>
+      <h1>Sell website packages through a simple Django-powered storefront.</h1>
+      <p class="hero-text">
+        Websale is a practice project where users can explore different website
+        packages, learn what each package offers, and contact the team for a
+        custom solution.
+      </p>
+      <div class="hero-actions">
+        <a href="{% url 'services' %}" class="button primary">Explore Services</a>
+        <a href="{% url 'contact' %}" class="button secondary">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h2>Why this project works for training</h2>
+      <ul>
+        <li>Uses Django views, URLs, templates, and static files</li>
+        <li>Fits an ecommerce concept without being too complex</li>
+        <li>Can later expand into products, cart, checkout, and admin</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Featured Packages</p>
+      <h2>Starter offerings for the first version</h2>
+    </div>
+    <div class="card-grid">
+      {% for service in featured_services %}
+      <article class="info-card">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section alt-section">
+  <div class="container split-section">
+    <div>
+      <p class="eyebrow">Future Scope</p>
+      <h2>Ready for the next phase of development</h2>
+    </div>
+    <div class="check-list">
+      <p>In later stages, this project can include:</p>
+      <ul>
+        <li>Website package catalog stored in Django models</li>
+        <li>User login and registration</li>
+        <li>Shopping cart and enquiry form</li>
+        <li>Order tracking and admin dashboard</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
