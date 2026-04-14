@@ -1,57 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout | Websale{% endblock %}
+
 {% block content %}
-<div class="container" style="padding: 180px 0 100px;">
-    <div class="section-grid" style="align-items: start;">
-        <div class="reveal">
-            <span class="label">CONTRACT / INITIALIZER</span>
-            <h1 style="font-size: 4rem; margin-bottom: 2rem;">Initiate <br><span class="serif-italic">Protocol</span>.</h1>
-            <p style="color: var(--muted); font-size: 1.1rem; margin-bottom: 3rem;">Define the administrative parameters for this engagement. All data is processed through our secure encryption layer.</p>
+<section class="section-pad reveal" style="padding-top: 150px; min-height: 100vh;">
+    <div class="container grid gap-5" style="grid-template-columns: 1fr 1.2fr; align-items: start;">
+        
+        <div>
+            <span class="sys-label">PROTOCOL // EXECUTION</span>
+            <h1 style="font-size: 3.5rem; margin-bottom: 2rem;">Initiate <br><span class="text-accent">Deployment.</span></h1>
+            <p class="text-muted" style="font-size: 1.1rem; margin-bottom: 3rem;">
+                Supply administrative parameters. Data throughput is secured via end-to-end proprietary encryption layers.
+            </p>
             
-            <div style="padding: 2.5rem; border: 1px solid var(--border); background: var(--surface-raised);">
-                <span class="spec">MANIFEST_SUMMARY</span>
-                <div style="margin-top: 1.5rem; display: grid; gap: 1rem;">
-                    <p style="color: var(--muted); font-size: 0.85rem;">DIGITAL_INVOICE_GENERATED</p>
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">SECURE_ORDER</div>
-                    <p style="font-size: 0.8rem; color: var(--muted);">A confirmation email will be dispatched upon execution.</p>
+            <div class="velocity-panel" style="padding: 2rem;">
+                <span class="sys-badge mb-2">MANIFEST_LOCK</span>
+                <div class="grid gap-1">
+                    <p class="text-muted text-mono" style="font-size: 0.8rem;">INVOICE_STATE: PENDING_EXECUTION</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--accent-cyan);" class="text-mono">SECURE_TUNNEL</div>
+                    <p class="text-muted text-mono" style="font-size: 0.8rem; margin-top: 1rem; border-top: 1px dashed var(--border-light); padding-top: 1rem;">
+                        Note: This is an architecture prototype preview. No capital transaction will be processed.
+                    </p>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card reveal" style="padding: 4rem; background: var(--surface-raised); border: 1px solid var(--border-strong);">
+        <div class="panel-glass">
             <form method="POST">
                 {% csrf_token %}
-                <span class="spec">ADMINISTRATIVE_DETAILS</span>
-                <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <span class="sys-label mb-2">ADMINISTRATIVE_VARIABLES</span>
+                
+                <div class="grid gap-1 mt-2">
+                    <div class="grid gap-1" style="grid-template-columns: 1fr 1fr;">
                         <div class="form-group">
-                            <label class="spec">FIRST_NAME</label>
-                            <input type="text" name="first_name" required value="{{ user.first_name }}">
+                            <label class="form-label">FIRST_NAME</label>
+                            <input type="text" name="first_name" required value="{{ user.first_name }}" class="form-input">
                         </div>
                         <div class="form-group">
-                            <label class="spec">LAST_NAME</label>
-                            <input type="text" name="last_name" required value="{{ user.last_name }}">
+                            <label class="form-label">LAST_NAME</label>
+                            <input type="text" name="last_name" required value="{{ user.last_name }}" class="form-input">
                         </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="spec">CONTACT_EMAIL</label>
-                        <input type="email" name="email" required value="{{ user.email }}">
+                        <label class="form-label">SECURE_COMMS (EMAIL)</label>
+                        <input type="email" name="email" required value="{{ user.email }}" class="form-input">
                     </div>
+                    
                     <div class="form-group">
-                        <label class="spec">BILLING_ADDRESS</label>
-                        <input type="text" name="address" required placeholder="Required">
+                        <label class="form-label">BILLING_VECTOR</label>
+                        <input type="text" name="address" required placeholder="Required Parameter" class="form-input">
                     </div>
+                    
                     <div class="form-group">
-                        <label class="spec">CITY_STATION</label>
-                        <input type="text" name="city" required placeholder="Required">
+                        <label class="form-label">CITY_STATION</label>
+                        <input type="text" name="city" required placeholder="Required Parameter" class="form-input">
                     </div>
                 </div>
                 
-                <div style="margin: 3rem 0; padding: 2rem; border-top: 1px dashed var(--border);">
-                    <p style="font-size: 0.75rem; color: var(--muted); line-height: 1.6;">By clicking "Execute Engagement", you agree to the Websale Global Terms of Service. Note: This is an ecommerce prototype; no actual payment will be processed.</p>
-                </div>
-                
-                <button type="submit" class="button primary" style="width: 100%; justify-content: center; padding: 1.2rem;">Execute Engagement</button>
+                <button type="submit" class="btn btn-primary w-full mt-3" style="padding: 1.2rem; font-size: 1rem;">Execute Handshake</button>
             </form>
         </div>
+        
     </div>
-</div>
+</section>
 {% endblock %}

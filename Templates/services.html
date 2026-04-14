@@ -1,48 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Architectures | Websale{% endblock %}
+
 {% block content %}
-<div class="container" style="padding: 180px 0 100px;">
-    <div style="max-width: 1400px; margin: 0 auto;">
-        <div class="section-grid" style="margin-bottom: 6rem; display: flex; justify-content: space-between; align-items: flex-end;">
-            <div class="reveal">
-                <span class="label">CATALOG / ARCHIVE</span>
-                <h1 style="font-size: 4.5rem; line-height: 1; letter-spacing: -0.02em;">Digital <span class="serif-italic">Strategy</span> & <br>Production.</h1>
+<section class="section-pad reveal" style="padding-top: 150px; min-height: 100vh;">
+    <div class="container">
+        
+        <div class="grid items-end justify-between mb-4 pb-2" style="grid-template-columns: 1fr auto; border-bottom: 1px solid var(--border-light);">
+            <div>
+                <span class="sys-label">CATALOG // DATABANK</span>
+                <h1 style="font-size: 3.5rem;">System <br><span class="text-accent">Architectures</span></h1>
             </div>
-            <div class="reveal" style="width: 100%; max-width: 400px;">
-                <form method="GET" action="{% url 'services' %}">
-                    <span class="spec">QUERY_PROTOCOL: SEARCH</span>
-                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                        <input type="text" name="q" placeholder="Keywords..." value="{{ request.GET.q }}" style="flex-grow: 1;">
-                        <button type="submit" class="button primary" style="padding: 0 1.5rem; height: 45px;">Run</button>
+            
+            <div style="width: 100%; min-width: 350px;">
+                <form method="GET" action="{% url 'services' %}" class="w-full">
+                    <label class="text-mono text-muted mb-1" style="display: block; font-size: 0.75rem;">> EXECUTE_QUERY</label>
+                    <div class="flex">
+                        <input type="text" name="q" placeholder="Enter parameters..." value="{{ request.GET.q|default:'' }}" class="form-input" style="border-right: none; border-radius: 2px 0 0 2px;">
+                        <button type="submit" class="btn btn-primary" style="border-radius: 0 2px 2px 0;">SCAN</button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div style="display: grid; gap: 0;">
+        <div class="grid gap-1">
             {% for package in packages %}
-            <div class="reveal" style="display: grid; grid-template-columns: 1fr 2fr 1.2fr; gap: 6rem; padding: 4rem 0; border-top: 1px solid var(--border); align-items: start;">
-                <div>
-                    <span class="spec">{{ package.category.name|upper }} / {{ package.id|stringformat:"04d" }}</span>
-                    <h3 style="font-size: 2rem; margin-top: 0.5rem;">{{ package.name }}</h3>
+            <div class="velocity-panel reveal flex" style="align-items: center; padding: 2.5rem 3rem;">
+                <!-- ID / Target -->
+                <div style="flex: 0 0 200px;">
+                    <span class="sys-badge mb-1">ID: {{ package.id|stringformat:"04d" }}</span>
+                    <p class="text-mono text-muted" style="font-size: 0.8rem;">CLASS: {{ package.category.name|upper }}</p>
                 </div>
-                <div>
-                    <p style="color: var(--muted); font-size: 1.1rem; line-height: 1.8; max-width: 600px;">{{ package.description }}</p>
+                
+                <!-- Main Spec -->
+                <div style="flex: 1; padding: 0 2rem; border-left: 1px solid var(--border-light);">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">{{ package.name }}</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; max-width: 600px;">{{ package.description|truncatewords:20 }}</p>
                 </div>
-                <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                    <p style="font-size: 2.5rem; font-weight: 700; color: var(--accent); margin-bottom: 2rem;">${{ package.price }}</p>
-                    <div style="display: flex; gap: 1rem; width: 100%; justify-content: flex-end;">
-                        <a href="{% url 'package_detail' package.slug %}" class="button secondary" style="flex-grow: 1; justify-content: center;">Technical Spec</a>
-                        <a href="{% url 'add_to_cart' package.id %}" class="button primary" style="width: 50px; justify-content: center; font-size: 1.2rem;">+</a>
+                
+                <!-- Action / Value -->
+                <div style="flex: 0 0 250px; display: flex; flex-direction: column; align-items: flex-end; border-left: 1px solid var(--border-light); padding-left: 2rem;">
+                    <p class="text-mono text-accent mb-2" style="font-size: 2rem; font-weight: 700;">${{ package.price }}</p>
+                    <div class="flex gap-1 w-full justify-end">
+                        <a href="{% url 'package_detail' package.slug %}" class="btn btn-secondary flex-1" style="padding: 0.6rem; text-align: center;">View Docs</a>
+                        <a href="{% url 'add_to_cart' package.id %}" class="btn btn-primary" style="padding: 0.6rem 1rem;" title="Commit to Manifest">
+                            <span>+</span>
+                        </a>
                     </div>
                 </div>
             </div>
             {% empty %}
-            <div style="text-align: center; padding: 120px 0; border-top: 1px solid var(--border);">
-                <span class="spec">0_RESULTS_RETURNED</span>
-                <h3 style="margin: 2rem 0; font-size: 2rem;">No matching architectures found in archive.</h3>
-                <a href="{% url 'services' %}" class="button primary">Reset Search Protocol</a>
+            <div class="velocity-panel text-center reveal" style="padding: 6rem 0; background: transparent; border-style: dashed;">
+                <span class="sys-label text-muted" style="color: #ef4444;">ERR_NO_MATCH</span>
+                <h3 class="mt-1 mb-2" style="font-size: 2rem;">Zero compliant architectures found.</h3>
+                <a href="{% url 'services' %}" class="btn btn-secondary">Clear Query Parameters</a>
             </div>
             {% endfor %}
         </div>
+        
     </div>
-</div>
+</section>
 {% endblock %}

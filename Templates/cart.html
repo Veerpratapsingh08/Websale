@@ -1,56 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Manifest | Websale{% endblock %}
+
 {% block content %}
-<div class="container" style="padding: 180px 0 100px;">
-    <div class="section-grid" style="margin-bottom: 4rem;">
-        <div>
-            <span class="label">CART / MANIFEST_01</span>
-            <h1 style="font-size: 4rem;">Transactional <br><span class="serif-italic">Manifest</span>.</h1>
+<section class="section-pad" style="padding-top: 150px; min-height: 100vh;">
+    <div class="container">
+        
+        <div class="mb-4 reveal">
+            <span class="sys-label">BUFFER // MANIFEST</span>
+            <h1 style="font-size: 3.5rem;">Transactional <br><span class="text-accent">Manifest.</span></h1>
+            <p class="text-muted mt-1" style="max-width: 450px;">
+               Audit the architectural components in your buffer before initiating the production protocol.
+            </p>
         </div>
-        <div style="display: flex; align-items: flex-end;">
-            <p style="color: var(--muted); max-width: 400px;">Review your architectural selections before initiating the production protocol.</p>
-        </div>
+        
+        {% if cart_items %}
+            <div class="reveal" style="border: 1px solid var(--border-light); background: var(--bg-surface);">
+                
+                <!-- Table Header -->
+                <div class="grid" style="grid-template-columns: 2fr 1fr 1fr; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border-light); background: var(--bg-elevated);">
+                    <div class="text-mono text-muted" style="font-size: 0.75rem;">ARCHITECTURAL_NODE</div>
+                    <div class="text-mono text-muted text-right" style="font-size: 0.75rem;">BASE_VALUATION</div>
+                    <div class="text-mono text-muted text-right" style="font-size: 0.75rem;">ACTIONS</div>
+                </div>
+
+                <!-- Table Body -->
+                <div class="items-list">
+                    {% for item in cart_items %}
+                    <div class="grid items-center" style="grid-template-columns: 2fr 1fr 1fr; padding: 2rem; border-bottom: 1px solid var(--border-light);">
+                        
+                        <div>
+                            <span class="sys-badge mb-1">ID: {{ item.package.id|stringformat:"04d" }}</span>
+                            <h3 style="font-size: 1.5rem; margin-top: 0.3rem;">{{ item.package.name }}</h3>
+                            <p class="text-muted text-mono" style="font-size: 0.8rem; margin-top: 0.5rem;">[ {{ item.package.category.name|upper }} ]</p>
+                        </div>
+                        
+                        <div class="text-right">
+                            <p class="text-mono text-primary" style="font-size: 1.25rem;">${{ item.package.price }}</p>
+                            <p class="text-muted text-mono mt-1" style="font-size: 0.75rem;">QTY: 0{{ item.quantity }}</p>
+                        </div>
+                        
+                        <div class="text-right">
+                            <p class="text-mono text-accent mb-1" style="font-size: 1.5rem; font-weight: 700;">${{ item.total }}</p>
+                            <a href="{% url 'remove_from_cart' item.package.id %}" class="sys-badge" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.1); cursor: pointer; text-decoration: none;">_DROP_NODE</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Footer Summary -->
+                <div class="grid items-center" style="grid-template-columns: 1fr; padding: 3rem 2rem; background: var(--bg-base);">
+                    <div class="text-right">
+                        <span class="sys-label">AGGREGATE_CALCULATION</span>
+                        <h2 class="text-mono text-accent mb-2" style="font-size: 3.5rem;">${{ total }}</h2>
+                        
+                        <div class="flex gap-1 justify-end">
+                            <a href="{% url 'services' %}" class="btn btn-secondary">Append Buffer</a>
+                            <a href="{% url 'checkout' %}" class="btn btn-primary" style="padding: 1.2rem 3rem;">Initiate Protocol</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="velocity-panel text-center reveal" style="padding: 100px 0; border: 1px dashed var(--border-strong);">
+                <span class="sys-label text-muted" style="color: #ef4444;">ERR_NULL_BUFFER</span>
+                <h3 class="mt-1 mb-2" style="font-size: 2rem;">Manifest is currently void.</h3>
+                <a href="{% url 'services' %}" class="btn btn-primary">Initialize Catalog</a>
+            </div>
+        {% endif %}
+        
     </div>
-    
-    {% if cart_items %}
-        <div style="border-top: 1px solid var(--border);">
-            {% for item in cart_items %}
-            <div class="reveal" style="display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 4rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); align-items: center;">
-                <div>
-                    <span class="spec">{{ item.package.category.name|upper }}</span>
-                    <h3 style="font-size: 1.5rem; margin-top: 0.5rem;">{{ item.package.name }}</h3>
-                </div>
-                <div>
-                    <span class="spec">UNIT_PRICE: ${{ item.package.price }}</span>
-                    <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">Engineering engagement for high-fidelity production.</p>
-                </div>
-                <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 1rem;">
-                    <p style="font-size: 1.5rem; font-weight: 700; color: var(--text);">${{ item.total }}</p>
-                    <a href="{% url 'remove_from_cart' item.package.id %}" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #ef4444; font-weight: 700;">[VOID_ENTRY]</a>
-                </div>
-            </div>
-            {% endfor %}
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 4rem 0;">
-                <div class="hero-visual" style="width: 120px; aspect-ratio: 1/1; border: 1px solid var(--border-strong);">
-                    <div style="position: absolute; inset: 20px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center;">
-                        <div class="plus-marker"></div>
-                    </div>
-                </div>
-                <div style="text-align: right;">
-                    <span class="spec">AGGREGATE_STAKE</span>
-                    <h2 style="font-size: 4rem; color: var(--accent); margin: 0.5rem 0;">${{ total }}</h2>
-                    <div style="display: flex; gap: 1.5rem; justify-content: flex-end; margin-top: 2rem;">
-                        <a href="{% url 'services' %}" class="button secondary">Add Vertices</a>
-                        <a href="{% url 'checkout' %}" class="button primary" style="padding: 1rem 3rem;">Initiate Protocol</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% else %}
-        <div style="text-align: center; padding: 100px 0; border: 1px solid var(--border-strong); background: var(--surface);">
-            <span class="spec">NULL_MANIFEST</span>
-            <h3 style="margin: 1.5rem 0; font-size: 2rem;">No architectures selected.</h3>
-            <a href="{% url 'services' %}" class="button primary">Initialize Archive</a>
-        </div>
-    {% endif %}
-</div>
+</section>
 {% endblock %}

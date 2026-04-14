@@ -1,49 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Comms | Websale{% endblock %}
+
 {% block content %}
-<div class="container" style="padding: 180px 0 100px;">
-    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start;">
-        <div class="reveal">
-            <span class="label">COMMUNICATION_HUB / 0A</span>
-            <h1 style="font-size: 4rem; margin-bottom: 2rem;">Initiate an <br><span class="serif-italic">Engagement</span>.</h1>
-            <p style="color: var(--muted); font-size: 1.1rem; margin-bottom: 3rem;">Ready to define your digital future? Submit your project brief below, and our strategy team will analyze your requirements within 4 business hours.</p>
+<section class="section-pad reveal" style="padding-top: 150px; min-height: 100vh;">
+    <div class="container grid gap-5" style="grid-template-columns: 1fr 1fr; align-items: start;">
+        
+        <!-- Info Column -->
+        <div>
+            <span class="sys-label">SECURE_COMMS // ESTABLISHED</span>
+            <h1 style="font-size: 4rem; margin-bottom: 2rem;">Transmit <br><span class="text-accent">Telemetry.</span></h1>
+            <p class="text-muted" style="font-size: 1.1rem; margin-bottom: 3rem; line-height: 1.7;">
+                Define your architectural parameters below. Our engineering leads process inbound requests within [04] operational hours.
+            </p>
             
-            <div style="display: grid; gap: 3rem;">
-                <div>
-                    <span class="spec">[LOG: DIRECT_SECURE]</span>
-                    <h4 style="color: #fff; margin-top: 0.5rem;">Electronic Briefs</h4>
-                    <p style="color: var(--muted);">engagements@websale.global</p>
+            <div class="grid gap-3">
+                <div class="flex gap-1 items-start">
+                    <span class="text-mono text-accent" style="font-size: 1.25rem; font-weight: 700;">//</span>
+                    <div>
+                        <span class="sys-badge mb-1">NODE: DIGITAL</span>
+                        <h4 class="text-mono mb-1" style="font-size: 0.85rem; color: #FFF;">ENCRYPTED_DROPS</h4>
+                        <p class="text-muted text-mono" style="font-size: 0.9rem;">engagements@websale.global</p>
+                    </div>
                 </div>
-                <div>
-                    <span class="spec">[LOG: STUDIO_LOC]</span>
-                    <h4 style="color: #fff; margin-top: 0.5rem;">Principal Studio</h4>
-                    <p style="color: var(--muted);">123 Innovation Drive, Silicon Valley, CA</p>
+                <div class="flex gap-1 items-start">
+                    <span class="text-mono text-accent" style="font-size: 1.25rem; font-weight: 700;">//</span>
+                    <div>
+                        <span class="sys-badge mb-1">NODE: PHYSICAL</span>
+                        <h4 class="text-mono mb-1" style="font-size: 0.85rem; color: #FFF;">COMMAND_CENTER</h4>
+                        <p class="text-muted text-mono" style="font-size: 0.9rem;">123 Innovation Drive, Silicon Valley</p>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card reveal" style="padding: 4rem; background: var(--surface-raised); border: 1px solid var(--border-strong);">
+        <!-- Form Column -->
+        <div class="panel-glass">
             <form method="POST">
                 {% csrf_token %}
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                    <div class="form-group">
-                        <label class="spec">USER_NAME</label>
-                        <input type="text" name="name" placeholder="Required" required>
+                <span class="sys-label mb-3">DATA_INPUT_STREAM</span>
+                
+                <div class="grid gap-1 mt-2">
+                    <div class="grid gap-1" style="grid-template-columns: 1fr 1fr;">
+                        <div class="form-group">
+                            <label class="form-label">AUTH_ENTITY (NAME)</label>
+                            <input type="text" name="name" required placeholder="Required" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">RETURN_VECTOR (EMAIL)</label>
+                            <input type="email" name="email" required placeholder="Required" class="form-input">
+                        </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="spec">USER_EMAIL</label>
-                        <input type="email" name="email" placeholder="Required" required>
+                        <label class="form-label">SCOPE_DEFINITION</label>
+                        <input type="text" name="subject" required placeholder="Project Title / System Request" class="form-input">
+                    </div>
+                    
+                    <div class="form-group mb-2">
+                        <label class="form-label">PAYLOAD_DATA (DETAILS)</label>
+                        <textarea name="message" rows="5" required placeholder="Supply precise system requirements..." class="form-input"></textarea>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="spec">PROJECT_SCOPE</label>
-                    <input type="text" name="subject" placeholder="Select Subject" required>
-                </div>
-                <div class="form-group">
-                    <label class="spec">DETAILED_BRIEF</label>
-                    <textarea name="message" rows="5" placeholder="Define your technical and design objectives..." required></textarea>
-                </div>
-                <button type="submit" class="button primary" style="width: 100%; justify-content: center;">Submit Brief</button>
+                
+                <button type="submit" class="btn btn-primary w-full" style="padding: 1.2rem; font-size: 1rem;">Transmit Payload</button>
             </form>
         </div>
+        
     </div>
-</div>
+</section>
 {% endblock %}

@@ -1,55 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Access | Websale{% endblock %}
+
 {% block content %}
-<div class="container" style="padding: 180px 0 100px;">
-    <div style="max-width: 480px; margin: 0 auto;">
-        <div class="reveal" style="text-align: center; margin-bottom: 3rem;">
-            <span class="label">SECURITY_GATE / AUTH</span>
-            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Portal <span class="serif-italic">Access</span>.</h1>
-            <p style="color: var(--muted); font-size: 0.9rem;">Authenticate to access your production manifest and engagement archives.</p>
-        </div>
+<section class="section-pad reveal" style="padding-top: 150px; min-height: 100vh; display: flex; align-items: center;">
+    <div class="container">
         
-        <div class="glass-card reveal" style="padding: 4rem; background: var(--surface-raised); border: 1px solid var(--border-strong);">
-            <form method="POST">
-                {% csrf_token %}
-                {% if form.errors %}
-                    <p style="color: #ef4444; margin-bottom: 1.5rem; text-align: center; font-size: 0.8rem; letter-spacing: 0.05em;">[ERROR: INVALID_CREDENTIALS]</p>
-                {% endif %}
-                
-                <div style="display: grid; gap: 1.5rem;">
+        <div style="max-width: 420px; margin: 0 auto;">
+            <div class="text-center mb-4">
+                <span class="sys-label">SECURITY_GATE // AUTH</span>
+                <h1 style="font-size: 3rem; margin-top: 0.5rem;">Access <span class="text-accent">Portal.</span></h1>
+            </div>
+            
+            <div class="panel-glass">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                        <div class="sys-message error" style="justify-content: center;">
+                            <span class="text-mono">ERR: INVALID_CREDENTIALS</span>
+                        </div>
+                    {% endif %}
+                    
                     <div class="form-group">
-                        <label class="spec">IDENTIFIER_KEY</label>
+                        <label class="form-label">> IDENTIFIER_KEY</label>
                         {{ form.username }}
                     </div>
-                    <div class="form-group">
-                        <label class="spec">AUTHENTICATION_TOKEN</label>
+                    <div class="form-group mb-3">
+                        <label class="form-label">> AUDIO_VISUAL_TOKEN (PASSWORD)</label>
                         {{ form.password }}
                     </div>
-                </div>
+                    
+                    <button type="submit" class="btn btn-primary w-full" style="padding: 1.2rem; font-size: 0.95rem;">Execute Login</button>
+                    <input type="hidden" name="next" value="{{ next }}">
+                </form>
                 
-                <button type="submit" class="button primary" style="width: 100%; justify-content: center; margin-top: 2rem; padding: 1rem;">Execute Login</button>
-            </form>
-            
-            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px dashed var(--border); text-align: center;">
-                <p style="font-size: 0.8rem; color: var(--muted);">New entity? <a href="{% url 'signup' %}" style="color: var(--accent); font-weight: 700;">[INITIALIZE_ACCOUNT]</a></p>
+                <div class="text-center mt-3 pt-3" style="border-top: 1px dashed var(--border-light);">
+                    <p class="text-mono text-muted" style="font-size: 0.8rem;">
+                        Unregistered entity? 
+                        <a href="{% url 'signup' %}" class="text-accent" style="text-decoration: none; margin-left: 0.5rem; font-weight: 700;">[ INITIALIZE_ACCOUNT ]</a>
+                    </p>
+                </div>
             </div>
+            
         </div>
+        
     </div>
-</div>
-
-<style>
-    /* Technical styling for Django form fields */
-    input {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        background: rgba(255, 255, 255, 0.02) !important;
-        border: 1px solid var(--border) !important;
-        border-radius: 4px;
-        color: var(--text) !important;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 0.85rem;
-    }
-    input:focus {
-        outline: none;
-        border-color: var(--accent) !important;
-    }
-</style>
+</section>
 {% endblock %}

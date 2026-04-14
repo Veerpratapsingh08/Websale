@@ -1,50 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Core Logic | Websale{% endblock %}
+
 {% block content %}
-<section class="hero reveal" style="min-height: auto; padding: 180px 0 100px;">
+<section class="section-pad reveal" style="padding-top: 180px; padding-bottom: 60px;">
   <div class="container">
-    <span class="label">STUDIO_PROFILE / ARCHIVE_01</span>
-    <h1 style="font-size: 4rem;">The <span class="serif-italic">Art</span> of <br>Technical Architecture.</h1>
-    <p style="max-width: 800px; margin-top: 2rem;">We founded Websale Global to bridge the gap between complex engineering and aesthetic minimalism. Our methodology is rooted in the belief that high-fidelity code is the foundation of high-value brands.</p>
+    <span class="sys-label">STUDIO_LOG // 001</span>
+    <h1 style="font-size: 5rem; margin-top: 1rem; margin-bottom: 2rem;">System <br><span class="text-accent">Architecture.</span></h1>
+    <p class="text-muted" style="font-size: 1.2rem; max-width: 700px; line-height: 1.8;">
+      Websale Global was engineered to bridge the gap between high-performance computing and frontend elasticity. 
+      We refuse to use standard templates. We build proprietary digital engines that run fast, secure, and aggressive.
+    </p>
   </div>
 </section>
 
-<section class="section-padding reveal">
-  <div class="container">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem;">
-      <div class="boutique-card">
-        <span class="spec">[LOG: INNOVATION_STABLE]</span>
-        <h3>Future-Proofed.</h3>
-        <p style="color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">We don't follow trends; we set the benchmarks. Our technical stack is audited daily to ensure long-term stability and high-velocity performance.</p>
-      </div>
-      <div class="boutique-card">
-        <span class="spec">[LOG: CLIENT_CENTRIC]</span>
-        <h3>Bespoke Logic.</h3>
-        <p style="color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">Every project is treated as a unique engineering challenge. We work as a technical extension of your brand to deliver proprietary digital solutions.</p>
-      </div>
-      <div class="boutique-card">
-        <span class="spec">[LOG: CODE_QUALITY]</span>
-        <h3>Atomic Code.</h3>
-        <p style="color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">Clean, optimized, and secure architecture is our baseline. We maintain a zero-compromise approach to system integrity and performance.</p>
-      </div>
+<section class="section-pad reveal">
+  <div class="container grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+    <div class="velocity-panel">
+      <span class="text-mono text-accent" style="font-size: 0.75rem;">> _V_STABILITY</span>
+      <h3 class="mt-1 mb-1" style="font-size: 1.8rem;">Immutable Core.</h3>
+      <p class="text-muted" style="font-size: 0.95rem;">
+        Legacy systems shatter under load. We build upon hardened Django backends to guarantee fault-tolerant transactions and continuous uptime under scale.
+      </p>
+    </div>
+    <div class="velocity-panel">
+      <span class="text-mono text-accent" style="font-size: 0.75rem;">> _V_AESTHETICS</span>
+      <h3 class="mt-1 mb-1" style="font-size: 1.8rem;">Frictionless UI.</h3>
+      <p class="text-muted" style="font-size: 0.95rem;">
+        Beauty lies in response time. Our interfaces employ CSS architectures designed to minimize rendering latency while maintaining striking visual authority.
+      </p>
+    </div>
+    <div class="velocity-panel">
+      <span class="text-mono text-accent" style="font-size: 0.75rem;">> _V_SECURITY</span>
+      <h3 class="mt-1 mb-1" style="font-size: 1.8rem;">Encrypted Logic.</h3>
+      <p class="text-muted" style="font-size: 0.95rem;">
+        Secure-by-default is our baseline. Custom middleware, aggressive sanitization, and rigorous authorization matrices lock your data environment down.
+      </p>
     </div>
   </div>
 </section>
 
-<section class="section-padding reveal" style="background: var(--surface);">
-    <div class="container" style="text-align: center;">
-        <span class="label">METRICS / BENCHMARKS</span>
-        <h2 style="margin-bottom: 4rem; font-size: 2.5rem;">Performance <span class="serif-italic">Verified</span>.</h2>
-        <div style="display: flex; justify-content: center; gap: 8rem; flex-wrap: wrap;">
-            <div style="text-align: center;">
-                <div style="font-family: var(--font-serif); font-size: 4rem; font-weight: 800; color: var(--accent);">99.9%</div>
-                <p class="spec">SYSTEM_UPTIME</p>
+<section class="section-pad reveal" style="background: var(--bg-surface); border-top: 1px solid var(--border-light);">
+    <div class="container text-center">
+        <span class="sys-label mb-4">VERIFIABLE_TELEMETRY</span>
+        <div class="flex justify-center flex-wrap gap-5 mt-3">
+            <div class="velocity-panel text-center" style="min-width: 250px;">
+                <div class="text-mono text-accent" style="font-size: 4rem; font-weight: 700;">99.9<span style="font-size: 2rem;">%</span></div>
+                <p class="sys-badge mt-1">NODE_UPTIME</p>
             </div>
-            <div style="text-align: center;">
-                <div style="font-family: var(--font-serif); font-size: 4rem; font-weight: 800; color: var(--accent);">150+</div>
-                <p class="spec">ENGAGEMENTS_DELIVERED</p>
+            <div class="velocity-panel text-center" style="min-width: 250px;">
+                <div class="text-mono text-accent" style="font-size: 4rem; font-weight: 700;">150<span style="font-size: 2rem;">+</span></div>
+                <p class="sys-badge mt-1">ENGAGEMENTS_LIVE</p>
             </div>
-            <div style="text-align: center;">
-                <div style="font-family: var(--font-serif); font-size: 4rem; font-weight: 800; color: var(--accent);">&lt;100ms</div>
-                <p class="spec">AVERAGE_LATENCY</p>
+            <div class="velocity-panel text-center" style="min-width: 250px;">
+                <div class="text-mono text-accent" style="font-size: 4rem; font-weight: 700;">&lt;50<span style="font-size: 2rem;">ms</span></div>
+                <p class="sys-badge mt-1">RESPONSE_TIME</p>
             </div>
         </div>
     </div>

@@ -4,85 +4,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Websale{% endblock %}</title>
+    <title>{% block title %}Websale | System Architecture{% endblock %}</title>
+    <!-- Dark Velocity Minimalism Stylesheet -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
-    <div class="grid-line-layer"></div>
+    <!-- Fixed HUD Grid Layer -->
+    <div class="bg-grid"></div>
     
-    <header class="site-header" id="navbar">
-      <div class="container nav-wrapper">
-        <a href="{% url 'home' %}" class="brand">Websale <span class="serif-italic">Global</span></a>
-        <nav class="site-nav">
-          <a href="{% url 'home' %}">Home</a>
-          <a href="{% url 'services' %}">Strategy</a>
-          <a href="{% url 'about' %}">Studio</a>
-          <a href="{% url 'contact' %}">Contact</a>
-          <a href="{% url 'view_cart' %}" style="color: var(--accent);">[MANIFEST]</a>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="container flex justify-between items-center">
+        <a href="{% url 'home' %}" class="nav-brand">WEBSALE<span class="text-accent">_</span></a>
+        
+        <nav class="nav-links">
+          <a href="{% url 'home' %}" class="nav-link">Home</a>
+          <a href="{% url 'services' %}" class="nav-link">Architectures</a>
+          <a href="{% url 'about' %}" class="nav-link">Core Logic</a>
+          <a href="{% url 'contact' %}" class="nav-link">Comms</a>
+          <a href="{% url 'view_cart' %}" class="nav-link text-accent" style="color: var(--accent-cyan); text-shadow: 0 0 8px rgba(0,229,255,0.4);">[ MANIFEST ]</a>
+          
           {% if user.is_authenticated %}
-            <a href="{% url 'dashboard' %}">Portal</a>
-            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'dashboard' %}" class="nav-link">Console</a>
+            <a href="{% url 'logout' %}" class="nav-link">Terminate</a>
           {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'signup' %}" class="button primary">Launch</a>
+            <a href="{% url 'login' %}" class="nav-link">Auth</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary">Initialize</a>
           {% endif %}
         </nav>
       </div>
     </header>
 
+    <!-- Global System Messages -->
     {% if messages %}
-    <div class="container" style="margin-top: 120px; position: relative; z-index: 10;">
+    <div class="container" style="margin-top: 100px; position: relative; z-index: 50;">
         {% for message in messages %}
-            <div style="font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border); padding: 1rem 0; margin-bottom: 2rem;">
-                [SYSTEM_LOG] {{ message }}
+            <div class="sys-message {% if message.tags %}{{ message.tags }}{% endif %}">
+                <span class="text-accent">[SYS_LOG]</span> 
+                {{ message }}
             </div>
         {% endfor %}
     </div>
     {% endif %}
 
+    <!-- Main Entry Point -->
     <main>
       {% block content %}{% endblock %}
     </main>
 
+    <!-- Global Footer -->
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem;">
+        <div class="grid gap-4" style="grid-template-columns: 2fr 1fr 1fr;">
           <div>
-            <h3 class="brand">Websale</h3>
-            <p style="margin-top: 1.5rem; color: var(--muted); max-width: 400px;">Crafting digital experiences that define industries. We don't just build websites; we build growth engines.</p>
+            <h3 class="nav-brand mb-1">WEBSALE<span class="text-accent">_</span></h3>
+            <p class="text-muted" style="max-width: 400px; font-size: 0.9rem;">
+              Forging high-velocity digital infrastructure. We architect web protocols that dictate performance, security, and conversion dominance.
+            </p>
           </div>
           <div>
-            <h4 style="margin-bottom: 1.5rem;">Expertise</h4>
-            <a href="{% url 'services' %}">Strategy</a><br>
-            <a href="{% url 'services' %}">Design</a><br>
-            <a href="{% url 'services' %}">Development</a><br>
-            <a href="{% url 'services' %}">Ecommerce</a>
+            <h4 class="text-mono mb-2" style="font-size: 0.9rem; color: #FFF;">PROTOCOL</h4>
+            <a href="{% url 'services' %}" class="footer-link">Landing Architectures</a>
+            <a href="{% url 'services' %}" class="footer-link">Bespoke Frameworks</a>
+            <a href="{% url 'services' %}" class="footer-link">Commerce Systems</a>
           </div>
           <div>
-            <h4 style="margin-bottom: 1.5rem;">Connect</h4>
-            <a href="{% url 'contact' %}">Contact</a><br>
-            <a href="{% url 'about' %}">About Us</a><br>
-            <a href="{% url 'dashboard' %}">Client Portal</a>
+            <h4 class="text-mono mb-2" style="font-size: 0.9rem; color: #FFF;">SYSTEM</h4>
+            <a href="{% url 'contact' %}" class="footer-link">Open Communications</a>
+            <a href="{% url 'about' %}" class="footer-link">Studio Philosophy</a>
+            <a href="{% url 'dashboard' %}" class="footer-link">Client Console</a>
           </div>
         </div>
-        <div style="text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--glass-border); color: var(--muted); font-size: 0.85rem;">
-          <p>&copy; 2026 Websale Global. All rights reserved.</p>
+        
+        <div class="flex justify-between items-center mt-4 pt-3" style="border-top: 1px solid var(--border-strong);">
+          <p class="text-mono text-muted" style="font-size: 0.75rem;">&copy; 2026 WEBSALE GLOBAL. ALL SYSTEMS ACTIVE.</p>
+          <span class="sys-badge">STATUS: ONLINE</span>
         </div>
       </div>
     </footer>
 
+    <!-- Core Runtime Scripts -->
     <script>
-      // Navbar scroll effect
+      // HUD Scroll Detection
       window.addEventListener('scroll', () => {
         const nav = document.getElementById('navbar');
-        if (window.scrollY > 50) {
+        if (window.scrollY > 30) {
           nav.classList.add('scrolled');
         } else {
           nav.classList.remove('scrolled');
         }
       });
 
-      // Scroll Reveal
+      // Intersection Observer for Reveal Elements
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {

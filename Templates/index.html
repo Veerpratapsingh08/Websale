@@ -1,193 +1,227 @@
 {% extends "base.html" %}
 
-{% block title %}Home | Websale{% endblock %}
+{% block title %}Terminal | Websale{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero reveal">
-  <div class="container hero-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
-    <div class="hero-content">
-      <span class="label">EST. 2026 / WEB_AGENCY</span>
-      <h1>The <span class="serif-italic">Architecture</span> of Digital Commerce.</h1>
-      <p>We engineer high-fidelity digital experiences for brands that prioritize craft over convenience. Our methodology combines technical precision with editorial design.</p>
-      <div class="hero-actions" style="display: flex; gap: 1.5rem;">
-        <a href="{% url 'services' %}" class="button primary">Start Engagement</a>
-        <a href="{% url 'about' %}" class="button secondary">Read Studio Profile</a>
+<section class="section-pad reveal" style="min-height: 100vh; display: flex; align-items: center; padding-top: 120px;">
+  <div class="container grid items-center gap-4" style="grid-template-columns: 1.2fr 1fr;">
+    <div>
+      <span class="sys-label">SYS.01 // ARCHITECTURE</span>
+      <h1 class="mb-2" style="font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1.05;">
+        High-Velocity <br><span class="text-gradient">Digital Infrastructure.</span>
+      </h1>
+      <p class="text-muted mb-3" style="font-size: 1.15rem; max-width: 500px;">
+        We engineer precision web architectures for companies demanding performance. 
+        Zero bloat. Immutable security. Absolute conversion focus.
+      </p>
+      <div class="flex gap-1 mt-2">
+        <a href="{% url 'services' %}" class="btn btn-primary">Deploy Now</a>
+        <a href="{% url 'about' %}" class="btn btn-secondary">Read Specs</a>
       </div>
     </div>
-    <div class="hero-visual reveal" style="position: relative; border: 1px solid var(--border-strong); aspect-ratio: 1/1; background: var(--surface);">
-        <div style="position: absolute; top: 20px; left: 20px; font-family: 'Courier New'; font-size: 10px; color: var(--muted);">REF_PLATE: 0A-92</div>
-        <div style="position: absolute; inset: 40px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center;">
-            <div style="width: 60%; height: 60%; border: 1px solid var(--accent); opacity: 0.3;"></div>
+    
+    <div class="tech-frame reveal" style="height: 100%; min-height: 500px;">
+        <div class="crosshair crosshair-tl"></div>
+        <div class="crosshair crosshair-tr"></div>
+        <div class="crosshair crosshair-bl"></div>
+        <div class="crosshair crosshair-br"></div>
+        
+        <span class="text-mono text-muted" style="position: absolute; top: 1.5rem; left: 1.5rem; font-size: 0.75rem;">
+          VIEWPORT_01 // ACTIVE_RENDER
+        </span>
+        
+        <!-- Abstract Tech Visual -->
+        <div style="width: 15rem; height: 15rem; border-radius: 50%; border: 1px solid var(--accent-cyan); box-shadow: var(--shadow-glow); display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="width: 10rem; height: 10rem; border-radius: 50%; border: 1px dashed var(--accent-blue); animation: spin 20s linear infinite;"></div>
+            <div class="text-mono" style="position: absolute; color: var(--accent-cyan); font-weight: 700; font-size: 1.5rem;">W_</div>
         </div>
-        <div class="plus-marker" style="position: absolute; top: -6px; left: -6px;"></div>
-        <div class="plus-marker" style="position: absolute; top: -6px; right: -6px;"></div>
-        <div class="plus-marker" style="position: absolute; bottom: -6px; left: -6px;"></div>
-        <div class="plus-marker" style="position: absolute; bottom: -6px; right: -6px;"></div>
     </div>
   </div>
 </section>
 
 <!-- Strategy (Services) Section -->
-<section class="section-padding reveal">
+<section class="section-pad reveal bg-elevated" style="background: var(--bg-surface);">
   <div class="container">
-    <div class="section-grid" style="margin-bottom: 6rem;">
+    <div class="grid items-end justify-between mb-4" style="grid-template-columns: 1fr auto;">
         <div>
-            <span class="label">SERVICES / 01-04</span>
-            <h2 style="font-size: 3.5rem;">Engineered <span class="serif-italic">Solutions.</span></h2>
+            <span class="sys-label">CORE_MODULES // 01-04</span>
+            <h2 style="font-size: 3rem;">Engineered <span class="text-accent">Solutions.</span></h2>
         </div>
-        <div style="display: flex; align-items: flex-end;">
-            <p style="color: var(--muted); max-width: 400px;">We specialize in four core vertices of digital production, ensuring every project meets our rigorous technical benchmarks.</p>
+        <div class="text-right">
+            <p class="text-muted" style="max-width: 400px; font-size: 0.95rem;">
+                Four distinct production pipelines, optimized to ensure maximum systemic output and stability.
+            </p>
         </div>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem;">
-      <div class="boutique-card">
-        <span class="spec">[01.CONVERSION]</span>
-        <h3>Performance <br>Directives.</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Optimized landing architectures designed for maximum visitor retention and data-driven conversion cycles.</p>
+    <div class="grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div class="velocity-panel reveal">
+        <span class="text-mono text-muted" style="font-size: 0.75rem;">[ 01.CONVERSION ]</span>
+        <h3 class="mt-1 mb-1" style="font-size: 1.75rem;">Performance Directives.</h3>
+        <p class="text-muted" style="font-size: 0.9rem;">Landing architectures mathematically engineered for hyper-conversion and immediate data capture.</p>
       </div>
-      <div class="boutique-card">
-        <span class="spec">[02.IDENTITY]</span>
-        <h3>Bespoke <br>Corporate.</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Digital ecosystems that reflect organizational authority through technical excellence and minimalist design.</p>
+      <div class="velocity-panel reveal" style="transition-delay: 0.1s;">
+        <span class="text-mono text-muted" style="font-size: 0.75rem;">[ 02.IDENTITY ]</span>
+        <h3 class="mt-1 mb-1" style="font-size: 1.75rem;">Bespoke Ecosystems.</h3>
+        <p class="text-muted" style="font-size: 0.9rem;">Authoritative digital presences structured for corporate entities requiring high-fidelity web standards.</p>
       </div>
-      <div class="boutique-card">
-        <span class="spec">[03.COMMERCE]</span>
-        <h3>Transactional <br>Flows.</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Highly secure ecommerce infrastructure built for high-volume transactions and seamless user journeys.</p>
+      <div class="velocity-panel reveal" style="transition-delay: 0.2s;">
+        <span class="text-mono text-muted" style="font-size: 0.75rem;">[ 03.COMMERCE ]</span>
+        <h3 class="mt-1 mb-1" style="font-size: 1.75rem;">Transactional Pipelines.</h3>
+        <p class="text-muted" style="font-size: 0.9rem;">Impenetrable ecommerce backends supporting fluid UI to drastically reduce cart abandonment latency.</p>
       </div>
-      <div class="boutique-card">
-        <span class="spec">[04.SYSTEMS]</span>
-        <h3>Architectural <br>Apps.</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Custom cloud applications engineered with scalable backends and low-latency frontend frameworks.</p>
+      <div class="velocity-panel reveal" style="transition-delay: 0.3s;">
+        <span class="text-mono text-muted" style="font-size: 0.75rem;">[ 04.SYSTEMS ]</span>
+        <h3 class="mt-1 mb-1" style="font-size: 1.75rem;">Cloud Applications.</h3>
+        <p class="text-muted" style="font-size: 0.9rem;">Custom-coded data dashboards and internal tools prioritizing low-latency data rendering.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Portfolio Showcase -->
-<section class="section-padding reveal">
+<section class="section-pad reveal">
   <div class="container">
-    <div class="section-grid" style="margin-bottom: 8rem;">
+    <div class="flex justify-between items-end mb-4">
         <div>
-            <span class="label">PORTFOLIO / ARCHIVE</span>
-            <h2 style="font-size: 3.5rem;">The <span class="serif-italic">Case Studies</span>.</h2>
+            <span class="sys-label">ARCHIVE // READOUT</span>
+            <h2 style="font-size: 3rem;">Live <span class="text-accent">Case Studies</span>.</h2>
         </div>
-        <div style="display: flex; align-items: flex-end; justify-content: flex-end;">
-            <a href="{% url 'about' %}" class="button secondary">View All Archives</a>
-        </div>
+        <a href="{% url 'about' %}" class="btn btn-secondary">Access Archive</a>
     </div>
     
-    <div class="portfolio-grid">
-        <div class="portfolio-item large">
-            <div class="portfolio-image">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Exchange">
-            </div>
-            <div class="portfolio-info">
-                <span class="spec">COMMERCE / 2025</span>
-                <h3>The Obsidian Exchange</h3>
-                <p style="color: var(--muted); font-size: 0.9rem;">A luxury commodities marketplace built with atomic design principles.</p>
+    <div class="grid gap-2" style="grid-template-columns: 2fr 1fr;">
+        <div class="tech-frame reveal" style="padding: 2rem; align-items: flex-end; justify-content: flex-start; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200') center/cover; aspect-ratio: 16/9; width: 100%;">
+            <div style="position: relative; z-index: 10;">
+                <span class="sys-badge mb-1">COMMERCE // V_2025</span>
+                <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem;">The Obsidian Exchange</h3>
+                <p style="color: #ccc; max-width: 500px;">A high-frequency commodity trading dashboard built completely from atomic components.</p>
             </div>
         </div>
-        <div class="portfolio-item small">
-            <div class="portfolio-image">
-                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=1200" alt="Flow">
-            </div>
-            <div class="portfolio-info">
-                <span class="spec">SAAS / 2024</span>
-                <h3>Cinematic Vector</h3>
-                <p style="color: var(--muted); font-size: 0.9rem;">Productivity systems for global content agencies.</p>
+        <div class="tech-frame reveal" style="padding: 2rem; align-items: flex-end; justify-content: flex-start; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=600') center/cover; aspect-ratio: auto; width: 100%;">
+            <div style="position: relative; z-index: 10;">
+                <span class="sys-badge mb-1">SAAS // V_2024</span>
+                <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Cinematic Vector</h3>
+                <p style="color: #ccc;">Latency optimization for media production agencies.</p>
             </div>
         </div>
     </div>
   </div>
 </section>
 
-<!-- Why Choose Us / Craft -->
-<section class="section-padding reveal" style="background: var(--surface);">
-    <div class="container">
-        <div class="section-grid">
-            <div style="border-right: 1px solid var(--border); padding-right: 4rem;">
-                <span class="label">PHILOSOPHY / 001</span>
-                <h2 style="font-size: 3rem; margin-bottom: 2rem;">The <span class="serif-italic">Craft</span> over <br>Convenience.</h2>
-                <p style="color: var(--muted); margin-bottom: 2rem;">We reject the assembly-line approach to web development. Every pixel is placed with intentionality; every line of code is audited for performance.</p>
-                
-                <div style="display: grid; gap: 2rem; margin-top: 4rem;">
-                    <div style="display: flex; gap: 2rem;">
-                        <span style="font-family: var(--font-serif); font-style: italic; color: var(--accent); font-size: 1.5rem;">01</span>
-                        <div>
-                            <h4 style="margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Atomic Design</h4>
-                            <p style="font-size: 0.85rem; color: var(--muted);">We build scalable design systems, not just static pages.</p>
-                        </div>
+<!-- Philosophy -->
+<section class="section-pad reveal" style="background: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="container grid" style="grid-template-columns: 1fr 1fr; gap: 6rem;">
+        <div>
+            <span class="sys-label">SYS.CORE // PHILOSOPHY</span>
+            <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Calculated <br>Precision.</h2>
+            <p class="text-muted mb-3">
+                Websale Global abandons bloated themes. We write lean, highly optimized code. 
+                Every module is stress-tested. Every interface is designed to reduce friction and maximize data throughput.
+            </p>
+            
+            <div class="grid gap-2 mt-3">
+                <div class="flex gap-1 items-start">
+                    <span class="text-mono text-accent" style="font-size: 1.25rem; font-weight: 700;">//</span>
+                    <div>
+                        <h4 class="text-mono mb-1" style="font-size: 0.85rem; color: #FFF;">ATOMIC FRAMEWORKS</h4>
+                        <p class="text-muted" style="font-size: 0.9rem;">Scalable systems replacing fragile pages.</p>
                     </div>
-                    <div style="display: flex; gap: 2rem;">
-                        <span style="font-family: var(--font-serif); font-style: italic; color: var(--accent); font-size: 1.5rem;">02</span>
-                        <div>
-                            <h4 style="margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Technical Audit</h4>
-                            <p style="font-size: 0.85rem; color: var(--muted);">99+ Lighthouse scores are our minimum baseline.</p>
-                        </div>
+                </div>
+                <div class="flex gap-1 items-start">
+                    <span class="text-mono text-accent" style="font-size: 1.25rem; font-weight: 700;">//</span>
+                    <div>
+                        <h4 class="text-mono mb-1" style="font-size: 0.85rem; color: #FFF;">PERFORMANCE AUDIT</h4>
+                        <p class="text-muted" style="font-size: 0.9rem;">99+ Lighthouse telemetry required for launch.</p>
                     </div>
                 </div>
             </div>
-            <div style="padding-left: 4rem; display: flex; flex-direction: column; justify-content: center;">
-                <p style="font-family: var(--font-serif); font-size: 2.5rem; line-height: 1.3; margin-bottom: 2rem;">"The team at <span class="serif-italic">Websale</span> has an obsessive eye for detail. They didn't just rebuild our platform; they redefined our brand's technical authority."</p>
-                <div style="display: flex; align-items: center; gap: 1.5rem;">
-                    <div style="width: 40px; height: 1px; background: var(--accent);"></div>
-                    <p style="font-weight: 600; font-size: 0.9rem;">Marcus Thorne, CTO at Vector Labs</p>
+        </div>
+        
+        <div class="flex col justify-center">
+            <div style="padding-left: 2rem; border-left: 2px solid var(--border-cyan);">
+                <p style="font-size: 2rem; font-weight: 600; line-height: 1.3; margin-bottom: 2rem;">
+                  "Websale delivered a system architecture that fundamentally upgraded our processing capacity and brand authority."
+                </p>
+                <div class="flex items-center gap-1">
+                    <div style="width: 30px; height: 1px; background: var(--accent-cyan);"></div>
+                    <p class="text-mono" style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">M. THORNE, CTO VECTOR LABS</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Pricing Section -->
-<section class="section-padding reveal">
+<!-- Pricing / Packages Section -->
+<section class="section-pad reveal">
     <div class="container">
-        <div class="section-grid" style="margin-bottom: 6rem;">
-            <div>
-                <span class="label">INVESTMENT / TIERS</span>
-                <h2 style="font-size: 3rem;">Predictable <br><span class="serif-italic">Engagements</span>.</h2>
-            </div>
-            <div style="display: flex; align-items: flex-end;">
-                <p style="color: var(--muted); max-width: 400px;">Bespoke quality coupled with standard-setting transparency in our pricing models.</p>
-            </div>
+        <div class="text-center mb-4">
+            <span class="sys-label">DEPLOYMENT_TIERS</span>
+            <h2 style="font-size: 3.5rem;">Frameworks.</h2>
+            <p class="text-muted mx-auto mt-1" style="max-width: 500px;">Transparent capitalization required for immediate infrastructure rollout.</p>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-            <div style="padding: 3rem; border: 1px solid var(--border); background: var(--surface);">
-                <span class="spec">[LOG: STARTER_V1]</span>
-                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Editorial Landing</h3>
-                <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;">High-performance single page architectures for maximum impact.</p>
-                <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">$2,500 <span style="font-size: 0.8rem; color: var(--muted); font-weight: 400;">/ PROJECT</span></p>
-                <a href="{% url 'contact' %}" class="button secondary" style="width: 100%;">Inquire Now</a>
+        <div class="grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <!-- Tier 1 -->
+            <div class="velocity-panel flex col justify-between">
+                <div>
+                    <span class="text-mono text-muted" style="font-size: 0.75rem;">[ PARAM: V_LIGHT ]</span>
+                    <h3 class="mt-1 mb-1" style="font-size: 1.8rem;">Landing Node</h3>
+                    <p class="text-muted" style="font-size: 0.9rem;">High-velocity single-page architecture built for maximum data capture and SEO dominance.</p>
+                </div>
+                <div class="mt-3">
+                    <p style="font-size: 2.5rem; font-weight: 800; font-family: var(--font-display);">$2,500 <span class="text-mono text-muted" style="font-size: 0.8rem; font-weight: 400;">/ BASE</span></p>
+                    <a href="{% url 'contact' %}" class="btn btn-secondary w-full mt-2">Initialize Query</a>
+                </div>
             </div>
-            <div style="padding: 3rem; border: 1px solid var(--accent); background: var(--bg); position: relative;">
-                <div style="position: absolute; top: 0; right: 0; background: var(--accent); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.4rem 1rem; text-transform: uppercase; letter-spacing: 0.1em;">Standard Baseline</div>
-                <span class="spec" style="color: var(--accent);">[LOG: PRO_STABLE]</span>
-                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Bespoke Business</h3>
-                <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;">Full-scale digital presence with CMS integration and custom design system.</p>
-                <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">$5,500 <span style="font-size: 0.8rem; color: var(--muted); font-weight: 400;">/ PROJECT</span></p>
-                <a href="{% url 'contact' %}" class="button primary" style="width: 100%;">Initiate Project</a>
+            
+            <!-- Tier 2 (Highlighted) -->
+            <div class="velocity-panel flex col justify-between" style="border-color: var(--accent-cyan); background: var(--bg-elevated); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,229,255,0.05);">
+                <div class="sys-badge" style="position: absolute; top: 1.5rem; right: 1.5rem;">RECOMMENDED</div>
+                <div>
+                    <span class="text-mono text-accent" style="font-size: 0.75rem;">[ PARAM: V_CORE ]</span>
+                    <h3 class="mt-1 mb-1" style="font-size: 1.8rem;">Business Core</h3>
+                    <p class="text-muted" style="font-size: 0.9rem;">Multi-node corporate ecosystem running on integrated CMS models. Maximum stability.</p>
+                </div>
+                <div class="mt-3">
+                    <p style="font-size: 2.5rem; font-weight: 800; font-family: var(--font-display);">$5,500 <span class="text-mono text-muted" style="font-size: 0.8rem; font-weight: 400;">/ BASE</span></p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary w-full mt-2">Deploy Framework</a>
+                </div>
             </div>
-            <div style="padding: 3rem; border: 1px solid var(--border); background: var(--surface);">
-                <span class="spec">[LOG: ENT_MAX]</span>
-                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Full Architecture</h3>
-                <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;">Comprehensive ecommerce or custom data-driven web applications.</p>
-                <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">$9,500 <span style="font-size: 0.8rem; color: var(--muted); font-weight: 400;">/ PROJECT</span></p>
-                <a href="{% url 'contact' %}" class="button secondary" style="width: 100%;">Consult Sales</a>
+            
+            <!-- Tier 3 -->
+            <div class="velocity-panel flex col justify-between">
+                <div>
+                    <span class="text-mono text-muted" style="font-size: 0.75rem;">[ PARAM: V_MAX ]</span>
+                    <h3 class="mt-1 mb-1" style="font-size: 1.8rem;">Commerce Matrix</h3>
+                    <p class="text-muted" style="font-size: 0.9rem;">Full-scale ecommerce pipeline. Distributed inventory routing, highly secure transaction ledgers.</p>
+                </div>
+                <div class="mt-3">
+                    <p style="font-size: 2.5rem; font-weight: 800; font-family: var(--font-display);">$9,500 <span class="text-mono text-muted" style="font-size: 0.8rem; font-weight: 400;">/ BASE</span></p>
+                    <a href="{% url 'contact' %}" class="btn btn-secondary w-full mt-2">Pach Consultation</a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Final CTA -->
-<section class="section-padding reveal" style="border-bottom: none;">
-    <div class="container" style="text-align: center;">
-        <span class="label">READY_TO_PROCEED</span>
-        <h2 style="font-size: 5rem; margin-bottom: 2rem; max-width: 900px; margin-inline: auto;">Start your <br><span class="serif-italic">Bespoke</span> Journey.</h2>
-        <p style="color: var(--muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto 3rem;">We are currently accepting new engagements for Q3 2026. Join our roster of elite digital brands.</p>
-        <a href="{% url 'contact' %}" class="button primary" style="padding: 1rem 3rem; font-size: 1rem;">Send Project Brief</a>
+<section class="section-pad reveal">
+    <div class="container text-center">
+        <div class="panel-glass" style="max-width: 800px; margin: 0 auto; background: var(--bg-surface);">
+            <span class="sys-label">EXECUTE_COMMAND</span>
+            <h2 style="font-size: 4rem; margin-top: 1rem; margin-bottom: 1rem;">Initialize Project.</h2>
+            <p class="text-muted mb-3" style="font-size: 1.1rem; max-width: 500px; margin-inline: auto;">
+                Currently accepting technical engagements for Q3. Secure your production slot before bandwidth depletion.
+            </p>
+            <a href="{% url 'contact' %}" class="btn btn-primary" style="padding: 1.2rem 3rem; font-size: 1rem;">Transmit Briefing</a>
+        </div>
     </div>
 </section>
+
+<style>
+/* Local keyframe for hero animation */
+@keyframes spin { 100% { transform: rotate(360deg); } }
+</style>
 {% endblock %}
