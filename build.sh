@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
-set -o errexit
+# Render Build Script
+# This script is executed during every deploy on Render.
 
+set -o errexit  # Exit on error
+
+echo ">>> Installing dependencies..."
 pip install --upgrade pip
 pip install -r requirements.txt
 
+echo ">>> Collecting static files..."
 python manage.py collectstatic --no-input
+
+echo ">>> Running migrations..."
 python manage.py migrate --no-input
 
-# Optional: create superuser if env vars are set
-if [ "$DJANGO_SUPERUSER_USERNAME" ]; then
-  python manage.py createsuperuser --no-input || echo "Superuser already exists."
-fi
-
-# Optional: seed the database with sample packages
-if [ "$SEED_DB" = "True" ]; then
-  python manage.py shell < seed_data.py
-fi
+echo ">>> Build complete!"

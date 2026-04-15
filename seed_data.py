@@ -1,16 +1,16 @@
 from Shop.models import Category, Package
 from decimal import Decimal
 
-
+# Clear existing
 Package.objects.all().delete()
 Category.objects.all().delete()
 
-
+# Create Categories
 basic = Category.objects.create(name="Standard Packages", description="Essential web solutions for individuals and small businesses.")
 business = Category.objects.create(name="Business Suite", description="High-performance websites with professional features.")
 ecommerce = Category.objects.create(name="Ecommerce", description="Complete online stores with inventory and payment systems.")
 
-
+# Create Packages
 Package.objects.create(
     category=basic,
     name="Personal Portfolio",

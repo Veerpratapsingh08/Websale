@@ -1,24 +1,25 @@
 # Websale: Premium Ecommerce Prototype
 
-Websale is a high-end ecommerce platform built with Django for selling professional website development packages. It features a modern dark aesthetic, fully dynamic product management, and a complete user purchase flow.
+Websale is a high-end ecommerce platform built with Django for selling professional website development packages. Inspired by premium retail experiences, it features a modern **Glassmorphism** aesthetic, fully dynamic product management, and a complete user purchase flow.
 
-## Key Features
+## ✨ Key Features
 
-- **Premium UI/UX**: Dark mode theme with card-based layouts, fluid typography, and micro-animations.
-- **Dynamic Catalog**: Management of website packages and categories through the Django Admin.
+- **Premium UI/UX**: Dark mode theme with glassmorphic cards, fluid typography, and micro-animations.
+- **Dynamic Catalog**: Full management of website packages and categories through the Django Admin.
 - **User Authentication**: Secure Signup, Login, and personalized Dashboards for order tracking.
-- **Session-based Cart**: Seamless shopping experience.
+- **Session-based Cart**: Seamless shopping experience without requiring immediate login.
 - **Order Management**: End-to-end checkout flow resulting in persistent order history.
-- **Responsive Design**: Optimized for mobile and desktop.
-- **Search & Filtering**: Search for finding packages.
+- **Responsive Design**: Optimized for everything from mobile devices to ultra-wide displays.
+- **Search & Filtering**: Real-time search for finding the perfect package.
 
-## Tech Stack
+## 🚀 Tech Stack
 
-- **Backend**: Django
-- **Frontend**: HTML5, CSS3, Django Template Language (DTL)
-- **Database**: SQLite3 (Local) / PostgreSQL (Production)
+- **Backend**: Django 6.0.3
+- **Frontend**: HTML5, CSS3 (Vanilla), Django Template Language (DTL)
+- **Database**: SQLite3
+- **Image Processing**: Pillow
 
-## Installation & Setup
+## 📦 Installation & Setup
 
 1. **Clone the repository**:
    ```bash
@@ -33,7 +34,7 @@ Websale is a high-end ecommerce platform built with Django for selling professio
 
 3. **Install Dependencies**:
    ```bash
-   pip install -r requirements.txt
+   python -m pip install Django Pillow
    ```
 
 4. **Initialize Database**:
@@ -57,10 +58,14 @@ Websale is a high-end ecommerce platform built with Django for selling professio
    python manage.py runserver
    ```
 
-## Project Structure
+## 🛠 Project Structure
 
 - `Websale/`: Core project settings and URL routing.
 - `Shop/`: Main application containing models, views, and commerce logic.
 - `Templates/`: Organized HTML templates with a reusable `base.html`.
 - `Static/`: Premium CSS stylesheets and image assets.
 - `seed_data.py`: Utility script for populating the marketplace.
+
+---
+
+*Built with ❤️ as a professional Django prototyping showcase.*
