@@ -17,14 +17,14 @@
         {% if cart_items %}
             <div class="reveal" style="border: 1px solid var(--border-light); background: var(--bg-surface);">
                 
-                <!-- Table Header -->
+                
                 <div class="grid" style="grid-template-columns: 2fr 1fr 1fr; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border-light); background: var(--bg-elevated);">
                     <div class="text-mono text-muted" style="font-size: 0.75rem;">ARCHITECTURAL_NODE</div>
                     <div class="text-mono text-muted text-right" style="font-size: 0.75rem;">BASE_VALUATION</div>
                     <div class="text-mono text-muted text-right" style="font-size: 0.75rem;">ACTIONS</div>
                 </div>
 
-                <!-- Table Body -->
+                
                 <div class="items-list">
                     {% for item in cart_items %}
                     <div class="grid items-center" style="grid-template-columns: 2fr 1fr 1fr; padding: 2rem; border-bottom: 1px solid var(--border-light);">
@@ -48,7 +48,7 @@
                     {% endfor %}
                 </div>
 
-                <!-- Footer Summary -->
+                
                 <div class="grid items-center" style="grid-template-columns: 1fr; padding: 3rem 2rem; background: var(--bg-base);">
                     <div class="text-right">
                         <span class="sys-label">AGGREGATE_CALCULATION</span>

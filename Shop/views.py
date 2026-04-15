@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Category, Package, Order, OrderItem, Enquiry
 from decimal import Decimal
 
-# Helper for Cart management
+
 def get_cart(request):
     cart = request.session.get('cart', {})
     return cart
@@ -45,7 +45,7 @@ def contact(request):
         return redirect('contact')
     return render(request, "contact.html")
 
-# Authentication Views
+
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -73,7 +73,7 @@ def logout_user(request):
     logout(request)
     return redirect('home')
 
-# Cart Logic
+
 def add_to_cart(request, package_id):
     cart = get_cart(request)
     package_id = str(package_id)

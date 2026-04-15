@@ -26,19 +26,19 @@
         <div class="grid gap-1">
             {% for package in packages %}
             <div class="velocity-panel reveal flex" style="align-items: center; padding: 2.5rem 3rem;">
-                <!-- ID / Target -->
+                
                 <div style="flex: 0 0 200px;">
                     <span class="sys-badge mb-1">ID: {{ package.id|stringformat:"04d" }}</span>
                     <p class="text-mono text-muted" style="font-size: 0.8rem;">CLASS: {{ package.category.name|upper }}</p>
                 </div>
                 
-                <!-- Main Spec -->
+                
                 <div style="flex: 1; padding: 0 2rem; border-left: 1px solid var(--border-light);">
                     <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">{{ package.name }}</h3>
                     <p class="text-muted" style="font-size: 0.95rem; max-width: 600px;">{{ package.description|truncatewords:20 }}</p>
                 </div>
                 
-                <!-- Action / Value -->
+                
                 <div style="flex: 0 0 250px; display: flex; flex-direction: column; align-items: flex-end; border-left: 1px solid var(--border-light); padding-left: 2rem;">
                     <p class="text-mono text-accent mb-2" style="font-size: 2rem; font-weight: 700;">${{ package.price }}</p>
                     <div class="flex gap-1 w-full justify-end">
