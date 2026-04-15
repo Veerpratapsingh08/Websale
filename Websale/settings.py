@@ -12,14 +12,6 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-EXTRA_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '')
-if EXTRA_HOSTS:
-    ALLOWED_HOSTS.extend(EXTRA_HOSTS.split(','))
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
